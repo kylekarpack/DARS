@@ -1,3 +1,5 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans:400,700');
+
 //Define Variables
 @transition:color .3s ease-in-out, background .3s ease-in-out;
 @baseFontSize:16px;
@@ -13,12 +15,29 @@
 	}
 }
 
+button, a, .btn {
+	border-radius:0;
+	-moz-order-radius:0;
+	-webkit-border-radius:0;
+	background-image:none;
+}
+
+a {
+	color:#3a87ad;
+}
+
 a, a:hover {
 	cursor:pointer;
+	
 	text-decoration:none;
 	-webkit-transition:@transition;
 	   -moz-transition:@transition;
 			transition:@transition;   
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color:#222;
+	font-weight:300;
 }
 
 h2 {
@@ -27,6 +46,7 @@ h2 {
 }
 
 body {
+	font-family:"Open Sans",sans-serif;
 	background:#eee;
 	font-size:@baseFontSize;
 	@media (max-width: 800px) {
@@ -81,12 +101,35 @@ body {
 	}
 }
 
-.navbar .alert {
-	display:none;
+.navbar {
+	.navbar-inner {
+		background:#222;
+		border:none;
+	}
+	a {
+		color:#fff !important;
+		text-shadow:none;
+		font-weight:700;
+	}
+	.alert {
+		display:none;
+	}
 }
 
 .hero-unit {
 	.static;
+	.page-header {
+		border-bottom: 1px solid #ccc;
+	}
+	small, p {
+		color:#ccc;
+	}
+	color:#eee;
+	background:#3C246B;
+	box-shadow:inset 0 0 100px #444;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border-radius:0;
 }
 
 .box {
@@ -114,12 +157,24 @@ body {
 	width:20%;
 	a {
 		display:block;
+		color:#222;
+	}
+	
+	.ui-datepicker td .ui-state-hover {
+		background:#3a87ad;
+		background-image:none;
+		-webkit-border-radius:0;
+		-moz-border-radius:0;
+		border-radius:0;
 	}
 	
 	li {
 		display:block;
 		font-size:18px;
-		border:1px solid #e5e5e5
+		border:1px solid #e5e5e5;
+		&.active a {
+			background:#3a87ad;
+		}		
 	}
 	&.fixed {
 		position:fixed;

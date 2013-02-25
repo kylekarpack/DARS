@@ -8,7 +8,7 @@ $(window).load(function() {
 	$(".nav-list li").removeClass("active");
 	
 	//had to rewrite accordion to iron out bugs and use without markup
-	$("h1.page-header").click(function() {
+	$("section h1.page-header").click(function() {
 		var content = $($(this).siblings()[0]);
 		if (content.css("display") == "none") {
 			content.slideDown();
@@ -20,23 +20,19 @@ $(window).load(function() {
 	});
 	
 	// Navigation
-	$(".nav-list a").click(function() {
-		var sel = $(this).attr("data-target");
-		var newTop = $($(this).attr("data-target")).offset().top;
-		var oldTop = $(this).offset().top;
+	$(".nav-list a, .hero-unit a").click(function() {
+		var sel = $(this).attr("data-target"); // get target
+		var newTop = $($(this).attr("data-target")).offset().top; // target's top offset
+		var oldTop = $(window).scrollTop(); // current offset
+		var speed = sel === "#container" ? 1000 : Math.abs(newTop-oldTop); //introductory or general?
+
 		$('body').animate({
 			 scrollTop: newTop
-		 }, Math.abs(newTop-oldTop), function() { // make sure selected one is showing
+		 }, speed, "easeInOutCubic", function() { // make sure selected one is showing
 				$(sel + " .box-content").slideDown()
 			})
 	});
 	
-	// Introductory scrolling
-	$("#go").click(function() {
-		 $('html, body').animate({
-			 scrollTop: $("#container").offset().top - $(".navbar").outerHeight()
-		 }, 1000);
-	 });
 	 
 	// Pinned nav
 	var calc1 = $('.hero-unit').outerHeight(true) + $(".navbar").outerHeight(),
