@@ -3,27 +3,35 @@ $(window).load(function() {
 	// Simple calendar
 	$("#cal").datepicker();
 	
+	// navigation higlighting
 	$("body").scrollspy();
-
+	$(".nav-list li").removeClass("active");
+	
 	//had to rewrite accordion to iron out bugs and use without markup
 	$("h1.page-header").click(function() {
 		var content = $($(this).siblings()[0]);
-		var height = content.height() + "px";
 		if (content.css("display") == "none") {
 			content.slideDown();
+			$(this).children().removeClass("icon-chevron-down").addClass("icon-chevron-up");
 		} else {
 			content.slideUp();
+			$(this).children().removeClass("icon-chevron-up").addClass("icon-chevron-down");
 		}
 	});
 	
+	// Navigation
 	$(".nav-list a").click(function() {
+		var sel = $(this).attr("data-target");
 		var newTop = $($(this).attr("data-target")).offset().top;
 		var oldTop = $(this).offset().top;
 		$('body').animate({
 			 scrollTop: newTop
-		 }, (Math.abs(newTop-oldTop)))
+		 }, Math.abs(newTop-oldTop), function() { // make sure selected one is showing
+				$(sel + " .box-content").slideDown()
+			})
 	});
-
+	
+	// Introductory scrolling
 	$("#go").click(function() {
 		 $('html, body').animate({
 			 scrollTop: $("#container").offset().top - $(".navbar").outerHeight()
@@ -51,12 +59,13 @@ $(window).load(function() {
 		}
 	});
 	
+	// "Login"
 	$('button[type="button"]').click(function() {
-		console.log("run");
 		var name = $("#inputEmail")[0].value;
 		$(".dropdown-menu").slideUp();
 		$(".alert").slideDown();
 		$(".dropdown-toggle").text("Hi, " + name + "!");
+		document.title = name + "'s DARS";
 	});
 
 });
