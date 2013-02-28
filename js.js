@@ -32,7 +32,7 @@ $(window).load(function() {
 	});
 	
 	// Popovers
-	$(".label-success").popover({
+	$(".label").popover({
 		"trigger":"click",
 		"html":"true",
 		"content":"This is a class about the foundations of HCI. <br> <b>It is required for your graduation.</b><br><a> Register now</a>",
