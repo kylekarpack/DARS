@@ -8,8 +8,7 @@ var aboveHeight;
 $(window).load(function() {
 	
 	$(".star").raty({ 
-		number: 10, 
-		size:24, 
+		number:10, 
 		// Randomize the default star rating
 		score:function() {
 			var ret = Math.floor(Math.random()*11);
