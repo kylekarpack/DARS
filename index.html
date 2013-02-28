@@ -1,7 +1,16 @@
 <!--
 This is a test prototype for HCDE 418
 We are resdesigning DARS to improve the User Experience
-Authored by Kyle Karpack & Group 1
+Painstakingly hand-coded with love by Kyle Karpack & Group 1
+-->
+
+<!--
+Suggestions from presentation:
+	Flow chart or "others have done" sort of thing. Highlight common paths
+	Better use of the calendar
+	For non-seniors?
+	Clarity of "Classes you have taken" section. Needs a heading
+	Sidebar terminology
 -->
 
 <!DOCTYPE html>
@@ -9,7 +18,7 @@ Authored by Kyle Karpack & Group 1
 <head>
 	<meta http-equiv="content-type" content="text/html" charset="utf-8">
 	<title>DARS</title>
-	<link rel="shortcut icon" href="favicon.png" />
+	<link rel="shortcut icon" href="favicon.jpg" />
 	<link rel="stylesheet" href="jquery-ui-1.10.0.custom.css" />
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" />
 	<link rel="stylesheet/less" type="text/css" href="style.less" />
@@ -20,6 +29,7 @@ Authored by Kyle Karpack & Group 1
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/1.3.3/less.min.js"></script>
+	<script src="jquery.raty.min.js"></script>
 	<script src="js.js"></script>
 
 </head>
@@ -34,18 +44,16 @@ Authored by Kyle Karpack & Group 1
       <a class="brand">DARS</a>
  
       <!-- Start of the nav bar content -->
-      <div class="nav-collapse"><!-- Other nav bar content -->
- 
-        <!-- The drop down menu -->
-        <ul class="nav pull-right">
-          <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+	<div class="nav-collapse"><!-- Other nav bar content -->
+		 <ul class="nav pull-right">
+		  <li class="dropdown">
+			<a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+			<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
 				<form class="form-horizontal">
 				  <div class="control-group">
 					<label class="control-label" for="inputEmail">UW Net ID</label>
 					<div class="controls">
-					  <input type="text" id="inputEmail" placeholder="Email">
+					  <input type="text" id="inputEmail" placeholder="NetID">
 					</div>
 				  </div>
 				  <div class="control-group">
@@ -60,11 +68,11 @@ Authored by Kyle Karpack & Group 1
 					</div>
 				  </div>
 				</form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+			</div>
+		  </li>
+		</ul>
+	  </div>
+	</div>
   </div>
 
 	<div class="alert">
@@ -85,27 +93,36 @@ Authored by Kyle Karpack & Group 1
 	<!--JESSICA-->
 	<section id="quick" class="box">
 		<h1 class="page-header">At A Glance<i class="icon-chevron-up"></i></h1>
-		<div class="box-content">
-		<!--CONTENT HERE-->
-		<div class="alert alert-info">
-			Your application for the <a href="http://www.washington.edu/uaa/mge/apply/research/index.htm">Mary Gates Scholarship</a> is due in 4 days.
-			<a href="#" class="close" data-dismiss="alert">&times;</a>
-		</div>  
-		<h2>Your Progress:</h2>
-		<div class="progress">
-		  <div class="bar bar-info" style="width: 15%;"></div>
-		  <div class="bar bar-success" style="width: 35%;"></div>
-		  <div class="bar bar-warning" style="width: 20%;"></div>
-		  <div class="bar bar-primary" style="width: 10%;"></div>
-		  <div class="bar bar-danger" style="width: 5%;"></div>
-		</div>
-		
-		GPA:4.00
-		Upcoming:alala
-		Stuff:nothing
-		</div>
+		<div class="box-content"> 
+			<h2>Alerts</h1>
+			<p><span class="label label-warning">PENDING QUARTERLY GOALS</span> Complete AES minor application</p>
+			<p><span class="label label-warning">PENDING QUARTERLY GOALS</span> Internship workshop next Monday</p>
+			<div class="alert alert-info"> 
+				Your application for the <a href="http://www.washington.edu/uaa/mge/apply/research/index.htm">Mary Gates Scholarship</a> is due in 4 days.
+				<a href="#" class="close" data-dismiss="alert">&times;</a> 
+			</div>  
+			<!--
+			<div class="alert alert-warning"> Final Exam March 20 - HCDE 418 </div>
+			<div class="alert alert-warning"> Final Exam March 22 - HCDE 407 </div>
+			<div class="alert alert-warning"> Final Exam March 23 - INFO 461 </div>
+			-->
+			<h2>Your Progress</h2>
+			<div class="progress">
+			  <div class="bar bar-info" style="width: 15%;">Prerequisites<h2>25</h2></div>
+			  <div class="bar bar-success" style="width: 35%;">Areas of Knowledge<h2>50</h2></div>
+			  <div class="bar bar-warning" style="width: 20%;">Major<h2>35</h2></div>
+			  <div class="bar bar-primary" style="width: 10%;">Minor<h2>15</h2></div>
+			  <div class="bar bar-danger" style="width: 5%;">Electives<h2>5</h2></div>
+			</div>
+			<div class="advising">
+				<h2>Your Advisor</h2>
+				<img class="img-polaroid" src="http://www.hcde.washington.edu/files/people/imgs/white_stephanie_sept2012_web.jpg" alt="Stephanie White">
+				<strong>Stephanie White</strong>, Academic Advisor, advises prospective and current undergraduate students on admissions processes and program requirements, facilitates the undergraduate admission process, hosts undergraduate recruiting events, provides faculty and classroom support, organizes the departmental graduation reception, and coordinates the exchange program with the University of Twente.
+				<div><a class="btn btn-primary btn-large"><i class="icon-calendar"></i>Appointment</a><a class="btn btn-large"><i class="icon-envelope"></i>Email</a><a class="btn btn-warning btn-large"><i class="icon-map-marker"></i>Directions</a></div>
+			</div>
+	</div>
 	</section>
-
+	
 	<div class="sidebar box">
 	<!--Sidebar content-->
 		<ul class="nav nav-list">
@@ -115,6 +132,7 @@ Authored by Kyle Karpack & Group 1
 			<li><a data-target="#recent">Most Recent Quarter</a></li> <!-- Should we call this current quarter to match the section heading?-->
 			<li><a data-target="#stats">Your Stats</a></li>
 			<li><a data-target="#graphs">DARSCharts</a></li>
+			<li><a data-target="#past">Past Classes</a></li>
 			<li><a data-target="#suggestions">Advice for You</a></li>
 			<!--Calendar-->
 			<li class="nav-header">Calendar</li>
@@ -134,7 +152,7 @@ Authored by Kyle Karpack & Group 1
 					<tr><td>Name</td><td>Kyle Karpack</td></tr>
 					<tr><td>Major</td><td>HCDE (HCI)</td></tr>
 					<tr><td>Class Standing</td><td>Senior</td></tr>
-					<tr><td>Grade Point Average</td><td>3.78 (3.85 in major)</td></tr>
+					<tr><td>Grade Point Average</td><td>3.72 (3.85 in major)</td></tr>
 				</table>
 			</div>
 		</section>
@@ -151,11 +169,11 @@ Authored by Kyle Karpack & Group 1
 						<th>Credits</th>
 						<th>Current Grade</th>
 					</tr>
-					<tr><td><a href="https://catalyst.uw.edu/workspace/derthick/34396/233752">HCDE 418</a></td>
+					<tr><td><a href="https://catalyst.uw.edu/workspace/derthick/34396/233752" target="_blank">HCDE 418</a></td>
 					<td>User Experience Design</td><td>N/A</td><td>5</td><td>3.72</td></tr>
-					<tr><td><a href="http://faculty.washington.edu/farkas/HCDE%20407-2013/">HCDE 407</a></td>
+					<tr><td><a href="http://faculty.washington.edu/farkas/HCDE%20407-2013/" target="_blank">HCDE 407</a></td>
 					<td>Software User Assistance</td><td>N/A</td><td>5</td><td>3.81</td></tr>
-					<tr><td><a href="http://faculty.washington.edu/ajko/teaching/info461/">INFO 461</a></td>
+					<tr><td><a href="http://faculty.washington.edu/ajko/teaching/info461/" target="_blank">INFO 461</a></td>
 					<td>Collaborative Software Design</td><td>N/A</td><td>5</td><td>3.63</td></tr>
 				</table>
 			</div>
@@ -165,7 +183,8 @@ Authored by Kyle Karpack & Group 1
 		<section id="stats" class="box">
 			<h1 class="page-header">Your Stats<i class="icon-chevron-up"></i></h1>
 			<div class="box-content">
-			
+				<img src="images/Graduation.JPG" alt="some_text">
+
 			</div>
 		</section>
 		
@@ -174,23 +193,145 @@ Authored by Kyle Karpack & Group 1
 			<h1 class="page-header">Your Graphs<i class="icon-chevron-up"></i></h1>
 			<div class="box-content">
 				<h2>GPA by Quarter</h2>
-				
+					<img src="images/GPA.JPG" alt="some_text">
 				<h2>Class Types Taken</h2>
-				
+					<img src="images/GenEdu.JPG" alt="some_text">
+
 				
 			</div>
+		</section>
+		
+		<section id="past" class="box">
+			<h1 class="page-header">Your Classes<i class="icon-chevron-up"></i></h1>
+			<div class="box-content">
+			<p>Use this section to see and rate your past classes and progress</p>
+			
+			<table class="table table-striped table-bordered table-condensed">
+			<tr>
+			  <th>Class</th>
+			  <th>Your Rating</th>
+			  <th>Area</th>
+			  <th>Grade</th>
+			</tr>
+			<tr>
+			  <td>HCDE 418</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-success">Major</span></td>
+			  <td>3.8</td>
+			</tr>
+			<tr>
+			  <td>HCDE 311</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-success">Major</span></td>
+			  <td>3.5</td>
+			</tr>
+			<tr>
+			  <td>PHIL 220</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-important">Elective</span></td>
+			  <td>3.9</td>
+			</tr>
+			<tr>
+			  <td>BIOL 112</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-important">Elective</span></td>
+			  <td>3.1</td>
+			</tr>
+			<tr>
+			  <td>HCDE 333</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-success">Major</span></td>
+			  <td>4.0</td>
+			</tr>
+			<tr>
+			  <td>AES 351</td>
+			  <td><div class="star"></div></td>
+			  <td><span class="label label-info">Minor</span></td>
+			  <td>4.0</td>
+			</tr>
+			</table>
+			<div class="clear"></div>
+		</div>
 		</section>
 		
 		<!--ELISE-->
 		<section id="suggestions" class="box">
 			<h1 class="page-header">Suggested for You<i class="icon-chevron-up"></i></h1>
 			<div class="box-content">
-				<p>Below are suggested classes to take that will help meet your requirements </p>
+			<p>Below are ranked classes based upon your rating of previous classes. Classes that best fit your preferences are listed first, followed by classes you should avoid.</p>
 
+			<h2>You Might Like / You Should Take</h2>
+			<table class="table table-bordered table-striped">
+			<tr>
+			  <th>Class</th>
+			  <th>% Match</th>
+			</tr>
+
+			<tr>
+			  <td>HCDE 409<br><span class="label label-success">Offered Next Quarter!</span></td>
+			  <td><div class="progress progress-success"><div class="bar" style="width: 90%">90%</div></div></td>
+			</tr>
+			<tr>
+			  <td>COMM 211</td>
+			  <td><div class="progress progress-success"><div class="bar" style="width: 70%">70%</div></div></td>
+			</tr>
+			<tr>
+			  <td>HCDE 431<br><span class="label label-success">Offered Next Quarter!</span></td>
+			  <td>
+				<div class="progress progress-success"><div class="bar" style="width: 50%">50%</div></div></td>
+			</tr>
+			<tr>
+			  <td>INFO 337</td>
+			  <td><div class="progress progress-success"><div class="bar" style="width: 20%">20%</div></div></td>
+			</tr>
+			</table>
+
+			<h2>You Might Want to Avoid</h2>
+
+			<table class="table table-bordered table-striped">
+			<tr>
+			  <th><b>Class</b></th>
+
+			  <th><b>% Match</b></th>
+			</tr>
+
+			<tr>
+			  <td>HCDE 409</td>
+
+			  <td>
+				<div class="progress progress-danger">
+				  <div class="bar" style="width: 75%">
+					75%
+				  </div>
+				</div>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>COMM 211</td>
+
+			  <td>
+				<div class="progress progress-danger">
+				  <div class="bar" style="width: 50%">
+					50%
+				  </div>
+				</div>
+			  </td>
+			</tr>
+
+			<tr>
+			  <td>HCDE 431</td>
+				<td><div class="progress progress-danger"> <div class="bar" style="width: 50%">50%</div></div></td>
+				</tr>
+				<tr>
+				<td>INFO 337</td>
+				<td><div class="progress progress-danger"> <div class="bar" style="width: 20%">20%</div></div></td>
+			</tr>
+			</table>
 			</div>
 		</section>	
 	</div>
-	</div>
+</div>
 </div>
 <body>
 </html>
