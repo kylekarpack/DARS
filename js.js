@@ -49,9 +49,9 @@ $(window).load(function() {
 	
 	//had to rewrite accordion to iron out bugs and use without markup
 	$("section h1.page-header").click(function() {
-		var content = $($(this).siblings()[0]);
+		var content = $(this).siblings().first();
 		if (content.css("display") == "none") {
-			content.slideDown();
+			content.slideDown(function() { aboveHeight = $('.sidebar').offset().top });
 			$(this).removeClass("h1up").children().removeClass("icon-chevron-down icon-white").addClass("icon-chevron-up");
 		} else {
 			content.slideUp(function() { aboveHeight = $('.sidebar').offset().top });
